@@ -1,1 +1,1 @@
-PIL
+PIL：Python Imaging Library
