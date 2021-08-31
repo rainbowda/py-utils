@@ -10,7 +10,7 @@ def createPdf(wordPath, pdfPath):
                             Item=constants.wdExportDocumentWithMarkup,
                             CreateBookmarks=constants.wdExportCreateHeadingBookmarks)
     word.Quit(constants.wdDoNotSaveChanges)
-createPdf(r"test.doc","test.pdf")
+createPdf(r"test.docx","test.pdf")
 
 
 
