@@ -5,7 +5,7 @@ import sys
 from tkinter import *
 from tkinter import ttk
 
-def createPdf(wordPath, pdfPath):
+def createPdf(result, wordPath, pdfPath):
     word = gencache.EnsureDispatch('Word.Application')
     doc = word.Documents.Open(wordPath, ReadOnly=1)
     doc.ExportAsFixedFormat(pdfPath,
@@ -13,6 +13,7 @@ def createPdf(wordPath, pdfPath):
                             Item=constants.wdExportDocumentWithMarkup,
                             CreateBookmarks=constants.wdExportCreateHeadingBookmarks)
     word.Quit(constants.wdDoNotSaveChanges)
+    result.set("转换成功！！！")
 
 
 # see https://www.runoob.com/python/python-gui-tkinter.html
@@ -44,8 +45,13 @@ def createWindow():
     ttk.Button(mainframe, text="选择", command=createPdf).grid(column=3, row=2, sticky=E)
 
 
+    ttk.result = StringVar()
     # 4.开始按钮
-    ttk.Button(mainframe, text="转换", width=30, command=lambda: createPdf(inputFilePathEntry.get(),outputFilePathEntry.get())).grid(column=2, row=3,sticky=E,padx=40,pady=20)
+    ttk.Button(mainframe, text="转换", width=30, command=lambda: createPdf(ttk.result, inputFilePathEntry.get(),outputFilePathEntry.get())).grid(column=2, row=3,sticky=E,padx=40,pady=20)
+
+    # 5.显示转换结果
+    ttk.Label(mainframe, textvariable=ttk.result).grid(column=2, row=4, sticky=(W, E))
+
 
     root.mainloop()# 进入消息循环
 
