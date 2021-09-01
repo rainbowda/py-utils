@@ -14,6 +14,7 @@ def createPdf(wordPath, pdfPath):
     word.Quit(constants.wdDoNotSaveChanges)
 
 
+# see https://www.runoob.com/python/python-gui-tkinter.html
 def createWindow():
     # 1.窗口
     root= Tk()
@@ -22,11 +23,12 @@ def createWindow():
 
     # 2.布局
 
-    # 3.输入输出男
+    # 3.输入输出按钮
 
     # 4.开始按钮
 
-    root.mainloop()
+    root.mainloop()# 进入消息循环
+
 
 # py .\main2.py test.docx test.pdf
 if __name__ == "__main__":
